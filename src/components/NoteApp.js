@@ -20,7 +20,7 @@ class NotesApp extends Component {
           id,
           ...noteProperties,
           archieved: false,
-          createdAt: Date.now(),
+          createdAt: new Date().toISOString(),
         }
       ]
     });
