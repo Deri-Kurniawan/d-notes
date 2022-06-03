@@ -4,13 +4,13 @@ import ArchiveButton from './ArchiveButton';
 import DeleteButton from './DeleteButton';
 import UnarchiveButton from './UnarchiveButton';
 
-const NoteItem = ({ title, body, archieved, createdAt, id, onDelete, onArchive, onUnarchive }) => {
+const NoteItem = ({ title, body, archived, createdAt, id, onDelete, onArchive, onUnarchive }) => {
   return (
     <li>
       <ul>
         <li>Title: {title}</li>
         <li>Body: {body}</li>
-        <li>Archieved: {(archieved) ? 'yes': 'no'}</li>
+        <li>Archieved: {(archived === true) ? 'yes': 'no'}</li>
         <li>Created At: {showFormattedDate(createdAt)}</li>
         <DeleteButton id={id} onDelete={onDelete} />
         {(onArchive) ? <ArchiveButton id={id} onArchive={onArchive} /> : null}
