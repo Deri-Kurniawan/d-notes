@@ -8,7 +8,6 @@ import { Card } from 'react-bootstrap'
 const NoteItem = ({
   title,
   body,
-  archived,
   createdAt,
   id,
   onDelete,
@@ -18,7 +17,7 @@ const NoteItem = ({
   return (
     <>
       <Card>
-        <Card.Header><span>{showFormattedDate(createdAt)}</span></Card.Header>
+        <Card.Header><small title='Date Created'>{showFormattedDate(createdAt)}</small></Card.Header>
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text>{body}</Card.Text>
