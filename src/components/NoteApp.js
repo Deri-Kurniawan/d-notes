@@ -3,6 +3,8 @@ import { getInitialData } from '../utils'
 import NotesInput from './NoteInput'
 import NotesList from './NoteList'
 import { v4 as uuidv4 } from 'uuid'
+import { Container, Row, Col, Card } from 'react-bootstrap'
+import NavigationBar from './NavigationBar'
 
 class NotesApp extends Component {
   constructor(props) {
@@ -12,14 +14,15 @@ class NotesApp extends Component {
     }
   }
 
-  onAddNoteHandler = (noteProperties) => {
+  onAddNoteHandler = ({ title, body}) => {
     const id = uuidv4()
     this.setState({
       notes: [
         ...this.state.notes,
         {
           id,
-          ...noteProperties,
+          title: (title.length > 0) ? title : 'Untitled',
+          body,
           archived: false,
           createdAt: new Date().toISOString(),
         }
@@ -58,12 +61,25 @@ class NotesApp extends Component {
 
     return (
       <>
-        <h1>D-Notes</h1>
-        <NotesInput addNote={this.onAddNoteHandler} />
-        <h2>Notes</h2>
-        <NotesList notes={notesUnarchived} onDelete={this.onDeleteNoteHandler} onArchive={this.onArchiveNoteHandler} />
-        <h2>Archived</h2>
-        <NotesList notes={notesArchived} onDelete={this.onDeleteNoteHandler} onUnarchive={this.onUnarchiveNoteHandler} />
+        <NavigationBar />
+        <Container>
+          <h1 className='text-center'>D-Notes App</h1>
+          <NotesInput addNote={this.onAddNoteHandler} />
+          <Row>
+            <Col xs={12} sm={12} md={6} lg={6} xl={6} xll={6}>
+                <h2 className="text-center my-3">Notes</h2>
+              <Card className='p-2'>
+                <NotesList notes={notesUnarchived} onDelete={this.onDeleteNoteHandler} onArchive={this.onArchiveNoteHandler} />
+              </Card>
+            </Col>
+            <Col xs={12} sm={12} md={6} lg={6} xl={6} xll={6}>
+                <h2 className="text-center my-3">Archived</h2>
+              <Card className="p-2">
+                <NotesList notes={notesArchived} onDelete={this.onDeleteNoteHandler} onUnarchive={this.onUnarchiveNoteHandler} />
+              </Card>
+            </Col>
+          </Row>
+        </Container>
       </>
     )
   }
