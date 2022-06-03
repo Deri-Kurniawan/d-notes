@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class NotesInput extends Component {
   constructor(props) {
@@ -16,9 +16,9 @@ class NotesInput extends Component {
   }
   
   onSubmitHandler = (event) => {
-    event.preventDefault();
-    this.props.addNote(this.state);
-    this.resetValues();
+    event.preventDefault()
+    this.props.addNote(this.state)
+    this.resetValues()
   }
 
   resetValues = () => {
@@ -41,8 +41,8 @@ class NotesInput extends Component {
           <button type='submit'>Submit</button>
         </form>
       </>
-    );
-  };
+    )
+  }
 }
 
-export default NotesInput;
+export default NotesInput

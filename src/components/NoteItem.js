@@ -1,8 +1,8 @@
-import React from 'react';
-import { showFormattedDate } from '../utils';
-import ArchiveButton from './ArchiveButton';
-import DeleteButton from './DeleteButton';
-import UnarchiveButton from './UnarchiveButton';
+import React from 'react'
+import { showFormattedDate } from '../utils'
+import ArchiveButton from './ArchiveButton'
+import DeleteButton from './DeleteButton'
+import UnarchiveButton from './UnarchiveButton'
 
 const NoteItem = ({ title, body, archived, createdAt, id, onDelete, onArchive, onUnarchive }) => {
   return (
@@ -20,4 +20,4 @@ const NoteItem = ({ title, body, archived, createdAt, id, onDelete, onArchive, o
   )
 }
 
-export default NoteItem;
+export default NoteItem

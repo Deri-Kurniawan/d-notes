@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { getInitialData } from '../utils';
-import NotesInput from './NoteInput';
-import NotesList from './NoteList';
-import { v4 as uuidv4 } from 'uuid';
+import React, { Component } from 'react'
+import { getInitialData } from '../utils'
+import NotesInput from './NoteInput'
+import NotesList from './NoteList'
+import { v4 as uuidv4 } from 'uuid'
 
 class NotesApp extends Component {
   constructor(props) {
     super(props)
     this.state = {
       notes: getInitialData()
-    };
-  };
+    }
+  }
 
   onAddNoteHandler = (noteProperties) => {
-    const id = uuidv4();
+    const id = uuidv4()
     this.setState({
       notes: [
         ...this.state.notes,
@@ -24,28 +24,28 @@ class NotesApp extends Component {
           createdAt: new Date().toISOString(),
         }
       ]
-    });
-  };
+    })
+  }
 
   onDeleteNoteHandler = (id) => {
     this.setState({
       notes: this.state.notes.filter(note => note.id !== id)
-    });
+    })
   }
   
   archiveNoteHandler(id, status) {
     this.setState({
       notes: this.state.notes.map(note => {
         if(note.id === id) {
-          note.archived = status;
+          note.archived = status
         }
-        return note;
+        return note
       })
-    });
+    })
   }
 
   onArchiveNoteHandler = (id) => {
-    this.archiveNoteHandler(id, true);
+    this.archiveNoteHandler(id, true)
   }
 
   onUnarchiveNoteHandler = (id) => {
@@ -53,8 +53,8 @@ class NotesApp extends Component {
   }
 
   render() {
-    const notesArchived = this.state.notes.filter(note => note.archived);
-    const notesUnarchived = this.state.notes.filter(note => !note.archived);
+    const notesArchived = this.state.notes.filter(note => note.archived)
+    const notesUnarchived = this.state.notes.filter(note => !note.archived)
 
     return (
       <>
@@ -65,8 +65,8 @@ class NotesApp extends Component {
         <h2>Archived</h2>
         <NotesList notes={notesArchived} onDelete={this.onDeleteNoteHandler} onUnarchive={this.onUnarchiveNoteHandler} />
       </>
-    );
-  };
+    )
+  }
 }
 
-export default NotesApp;
+export default NotesApp

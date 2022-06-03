@@ -1,5 +1,5 @@
-import React from 'react';
-import NoteItem from './NoteItem';
+import React from 'react'
+import NoteItem from './NoteItem'
 
 const NotesList = ({ notes, onDelete, onArchive, onUnarchive }) => {
   if(notes.length === 0) {
@@ -21,7 +21,7 @@ const NotesList = ({ notes, onDelete, onArchive, onUnarchive }) => {
         ))
       }
     </ol>
-  );
+  )
 }
 
-export default NotesList;
+export default NotesList
