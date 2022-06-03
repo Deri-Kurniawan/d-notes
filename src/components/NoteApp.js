@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getInitialData } from '../utils';
 import NotesInput from './NoteInput';
 import NotesList from './NoteList';
+import { v4 as uuidv4 } from 'uuid';
 
 class NotesApp extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class NotesApp extends Component {
   };
 
   onAddNoteHandler = (noteProperties) => {
-    const id = this.state.notes.length + 1;
+    const id = uuidv4();
     this.setState({
       notes: [
         ...this.state.notes,
