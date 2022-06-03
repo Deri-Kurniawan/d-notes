@@ -4,7 +4,16 @@ import ArchiveButton from './ArchiveButton'
 import DeleteButton from './DeleteButton'
 import UnarchiveButton from './UnarchiveButton'
 
-const NoteItem = ({ title, body, archived, createdAt, id, onDelete, onArchive, onUnarchive }) => {
+const NoteItem = ({
+  title,
+  body,
+  archived,
+  createdAt,
+  id,
+  onDelete,
+  onArchive,
+  onUnarchive, 
+}) => {
   return (
     <li>
       <ul>
