@@ -1,9 +1,9 @@
 import React from 'react';
 import NoteItem from './NoteItem';
 
-const NotesList = ({ notes, onDelete }) => {
+const NotesList = ({ notes, onDelete, onArchive, onUnarchive }) => {
   if(notes.length === 0) {
-    return <h2>Tidak ada Catatan</h2>
+    return <p>Tidak ada Catatan</p>
   }
 
   return (
@@ -15,6 +15,8 @@ const NotesList = ({ notes, onDelete }) => {
           {...note}
           id={note.id}
           onDelete={onDelete}
+          onArchive={onArchive}
+          onUnarchive={onUnarchive}
           />
         ))
       }

@@ -19,7 +19,7 @@ class NotesApp extends Component {
         {
           id,
           ...noteProperties,
-          archieved: false,
+          archived: false,
           createdAt: new Date().toISOString(),
         }
       ]
@@ -31,13 +31,40 @@ class NotesApp extends Component {
       notes: this.state.notes.filter(note => note.id !== id)
     });
   }
+  
+  onArchiveNoteHandler = (id) => {
+    this.setState({
+        notes: this.state.notes.map(note => {
+          if(note.id === id) {
+            note.archived = true;
+          }
+          return note;
+        })
+      });
+  }
+
+  onUnarchiveNoteHandler = (id) => {
+    this.setState({
+        notes: this.state.notes.map(note => {
+          if(note.id === id) {
+            note.archived = false;
+          }
+          return note;
+        })
+      });
+  }
 
   render() {
+    const notesArchived = this.state.notes.filter(note => note.archived);
+    const notesUnarchived = this.state.notes.filter(note => !note.archived);
     return (
       <>
         <h1>D-Notes</h1>
         <NotesInput addNote={this.onAddNoteHandler} />
-        <NotesList notes={this.state.notes} onDelete={this.onDeleteNoteHandler} />
+        <h2>Notes</h2>
+        <NotesList notes={notesUnarchived} onDelete={this.onDeleteNoteHandler} onArchive={this.onArchiveNoteHandler} />
+        <h2>Archived</h2>
+        <NotesList notes={notesArchived} onDelete={this.onDeleteNoteHandler} onUnarchive={this.onUnarchiveNoteHandler} />
       </>
     );
   };
