@@ -32,31 +32,29 @@ class NotesApp extends Component {
     });
   }
   
-  onArchiveNoteHandler = (id) => {
+  archiveNoteHandler(id, status) {
     this.setState({
-        notes: this.state.notes.map(note => {
-          if(note.id === id) {
-            note.archived = true;
-          }
-          return note;
-        })
-      });
+      notes: this.state.notes.map(note => {
+        if(note.id === id) {
+          note.archived = status;
+        }
+        return note;
+      })
+    });
+  }
+
+  onArchiveNoteHandler = (id) => {
+    this.archiveNoteHandler(id, true);
   }
 
   onUnarchiveNoteHandler = (id) => {
-    this.setState({
-        notes: this.state.notes.map(note => {
-          if(note.id === id) {
-            note.archived = false;
-          }
-          return note;
-        })
-      });
+    this.archiveNoteHandler(id, false)
   }
 
   render() {
     const notesArchived = this.state.notes.filter(note => note.archived);
     const notesUnarchived = this.state.notes.filter(note => !note.archived);
+
     return (
       <>
         <h1>D-Notes</h1>
