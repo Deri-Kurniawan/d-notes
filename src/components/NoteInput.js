@@ -31,8 +31,6 @@ class NotesInput extends Component {
   render() {
     return (
       <>
-      {this.state.title}
-      {this.state.body}
         <form onSubmit={this.onSubmitHandler}>
           <label htmlFor='title'></label>
           <input type='text' name='title' id='title' value={this.state.title} onChange={this.onInputChangeHandler} placeholder='Title' />
