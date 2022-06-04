@@ -5,9 +5,9 @@ import NoteSearch from './NoteSearch'
 const NavigationBar = ({ onSearch }) => {
   return (
     <>
-      <Navbar className='shadow-rounded' sticky='top' bg="light" expand="md">
+      <Navbar className='shadow rounded' sticky='top' bg="light" expand="md">
         <Container>
-          <Navbar.Brand href="#">D-Notes</Navbar.Brand>
+          <Navbar.Brand href="/">D-Notes</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
