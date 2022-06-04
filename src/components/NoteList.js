@@ -15,11 +15,11 @@ const NotesList = ({ notes, onDelete, onArchive, onUnarchive, keyword }) => {
   }
 
   if(keyword.length > 0 && notes.length === 0) {
-    return <Alert variant='danger'>Catatan dengan judul <b>{keyword}</b> tidak ditemukan</Alert>
+    return <Alert variant='danger'>Note by title <b>{keyword}</b> not found!</Alert>
   }
 
   if(keyword.length === 0 && notes.length === 0) {
-    return <Alert variant='danger'>Tidak ada catatan</Alert>
+    return <Alert variant='danger'>Notes is empty</Alert>
   }
 
   return (
