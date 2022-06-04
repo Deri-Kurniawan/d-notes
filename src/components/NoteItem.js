@@ -16,7 +16,7 @@ const NoteItem = ({
 }) => {
   return (
     <>
-      <Card draggable>
+      <Card>
         <Card.Header><small title='Date Created'>{showFormattedDate(createdAt)}</small></Card.Header>
         <Card.Body>
           <Card.Title>{title}</Card.Title>
