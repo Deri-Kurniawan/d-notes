@@ -86,6 +86,10 @@ class NotesInput extends Component {
     this.setState({
       title: '',
       body: '',
+      titleCharLimitRemaining: this.state.titleCharMaxLimit,
+      bodyCharLimitRemaining: this.state.bodyCharMaxLimit,
+      titleClass: 'text-success',
+      bodyClass: 'text-success',
     })
   }
 
