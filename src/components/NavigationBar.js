@@ -1,10 +1,11 @@
 import React from 'react'
-import { Navbar, Container, Nav, Button, Form, FormControl } from 'react-bootstrap'
+import { Navbar, Container, Nav } from 'react-bootstrap'
+import NoteSearch from './NoteSearch'
 
-const NavigationBar = () => {
+const NavigationBar = ({ onSearch }) => {
   return (
     <>
-      <Navbar className='shadow-rounded' sticky='top' bg="light" expand="lg">
+      <Navbar className='shadow-rounded' sticky='top' bg="light" expand="md">
         <Container>
           <Navbar.Brand href="#">D-Notes</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -14,15 +15,9 @@ const NavigationBar = () => {
               style={{ maxHeight: '100px' }}
               navbarScroll
             ></Nav>
-            <Form className="d-flex">
-              <FormControl
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form>
+            <div className="d-flex">
+              <NoteSearch onSearch={onSearch} />
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>

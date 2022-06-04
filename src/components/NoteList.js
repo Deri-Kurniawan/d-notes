@@ -2,8 +2,23 @@ import React from 'react'
 import NoteItem from './NoteItem'
 import { Row, Col, Alert } from 'react-bootstrap'
 
-const NotesList = ({ notes, onDelete, onArchive, onUnarchive }) => {
-  if(notes.length === 0) {
+const NotesList = ({ notes, onDelete, onArchive, onUnarchive, keyword }) => {
+  if(notes.length > 0) {
+    notes = notes.filter(note => {
+      if(keyword === '') {
+        return note
+      }
+      if(note.title.toLowerCase().includes(keyword.toLowerCase())) {
+        return note
+      }
+    });
+  }
+
+  if(keyword.length > 0 && notes.length === 0) {
+    return <Alert variant='danger'>Catatan dengan judul <b>{keyword}</b> tidak ditemukan</Alert>
+  }
+
+  if(keyword.length === 0 && notes.length === 0) {
     return <Alert variant='danger'>Tidak ada catatan</Alert>
   }
 

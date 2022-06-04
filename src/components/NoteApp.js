@@ -10,7 +10,8 @@ class NotesApp extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      notes: getInitialData()
+      notes: getInitialData(),
+      keyword: '',
     }
   }
 
@@ -55,13 +56,17 @@ class NotesApp extends Component {
     this.archiveNoteHandler(id, false)
   }
 
+  onSearchNoteHandler = (keyword) => {
+    this.setState({ keyword })
+  }
+
   render() {
     const notesArchived = this.state.notes.filter(note => note.archived)
     const notesUnarchived = this.state.notes.filter(note => !note.archived)
 
     return (
       <>
-        <NavigationBar />
+        <NavigationBar onSearch={this.onSearchNoteHandler} />
         <Container>
           <h1 className='text-center'>D-Notes App</h1>
           <NotesInput addNote={this.onAddNoteHandler} />
@@ -69,13 +74,13 @@ class NotesApp extends Component {
             <Col xs={12} sm={12} md={6} lg={6} xl={6} xll={6}>
                 <h2 className="text-center my-3">Notes</h2>
               <Card className='p-2'>
-                <NotesList notes={notesUnarchived} onDelete={this.onDeleteNoteHandler} onArchive={this.onArchiveNoteHandler} />
+                <NotesList notes={notesUnarchived} onDelete={this.onDeleteNoteHandler} onArchive={this.onArchiveNoteHandler} keyword={this.state.keyword} />
               </Card>
             </Col>
             <Col xs={12} sm={12} md={6} lg={6} xl={6} xll={6}>
                 <h2 className="text-center my-3">Archived</h2>
               <Card className="p-2">
-                <NotesList notes={notesArchived} onDelete={this.onDeleteNoteHandler} onUnarchive={this.onUnarchiveNoteHandler} />
+                <NotesList notes={notesArchived} onDelete={this.onDeleteNoteHandler} onUnarchive={this.onUnarchiveNoteHandler} keyword={this.state.keyword} />
               </Card>
             </Col>
           </Row>
