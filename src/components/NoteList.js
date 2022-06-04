@@ -37,7 +37,7 @@ const NotesList = ({ notes, onDelete, onArchive, onUnarchive, keyword }) => {
           </Col>
         ))
       }
-      </Row>
+    </Row>
   )
 }
 
