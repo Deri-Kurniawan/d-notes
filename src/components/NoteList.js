@@ -11,6 +11,7 @@ const NotesList = ({ notes, onDelete, onArchive, onUnarchive, keyword }) => {
       if(note.title.toLowerCase().includes(keyword.toLowerCase())) {
         return note
       }
+      return false;
     });
   }
 
