@@ -5,6 +5,7 @@ import NotesList from './NoteList'
 import { v4 as uuidv4 } from 'uuid'
 import { Container, Row, Col, Card } from 'react-bootstrap'
 import NavigationBar from './NavigationBar'
+import Footer from './Footer'
 
 class NotesApp extends Component {
   constructor(props) {
@@ -85,6 +86,7 @@ class NotesApp extends Component {
             </Col>
           </Row>
         </Container>
+        <Footer/>
       </>
     )
   }
