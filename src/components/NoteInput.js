@@ -113,7 +113,7 @@ class NotesInput extends Component {
                 </span>
               </small>
             </Form.Group>
-            <Button type='submit' variant='primary'>Submit</Button>
+            <Button type='submit' variant='primary'>Save Note</Button>
         </Form>
       </>
     )
