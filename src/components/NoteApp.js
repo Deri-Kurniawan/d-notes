@@ -62,8 +62,8 @@ class NotesApp extends Component {
   };
 
   render() {
-    const notesArchived = this.state.notes.filter((note) => note.archived);
-    const notesUnarchived = this.state.notes.filter((note) => !note.archived);
+    const archivedNotes = this.state.notes.filter((note) => note.archived);
+    const unarchivedNotes = this.state.notes.filter((note) => !note.archived);
 
     return (
       <>
@@ -75,7 +75,7 @@ class NotesApp extends Component {
             <Col xs={12} sm={12} md={6} lg={6} xl={6} xll={6}>
               <h2 className="text-center my-3">Notes</h2>
                 <NotesList
-                  notes={notesUnarchived}
+                  notes={unarchivedNotes}
                   onDelete={this.onDeleteNoteHandler}
                   onArchive={this.onArchiveNoteHandler}
                   keyword={this.state.keyword}
@@ -84,7 +84,7 @@ class NotesApp extends Component {
             <Col xs={12} sm={12} md={6} lg={6} xl={6} xll={6}>
               <h2 className="text-center my-3">Archived</h2>
                 <NotesList
-                  notes={notesArchived}
+                  notes={archivedNotes}
                   onDelete={this.onDeleteNoteHandler}
                   onUnarchive={this.onUnarchiveNoteHandler}
                   keyword={this.state.keyword}
