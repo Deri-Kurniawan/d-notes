@@ -69,7 +69,7 @@ class NotesApp extends Component {
       <>
         <NavigationBar onSearch={this.onSearchNoteHandler} />
         <Container>
-          <h1 className='text-center my-3'>D-Notes App</h1>
+          <h1 className='text-center my-3'>D-Notes</h1>
           <NotesInput addNote={this.onAddNoteHandler} />
           <Row>
             <Col xs={12} sm={12} md={6} lg={6} xl={6} xll={6}>
