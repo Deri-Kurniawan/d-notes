@@ -23,8 +23,8 @@ class NotesApp extends Component {
         ...this.state.notes,
         {
           id,
-          title: title.length > 0 ? title : "Untitled Note",
-          body,
+          title: (title.length > 0) ? title : "Untitled Note",
+          body: (body.length > 0) ? body : "Blank note",
           archived: false,
           createdAt: new Date().toISOString(),
         },
