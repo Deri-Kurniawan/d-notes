@@ -16,6 +16,44 @@ class NotesInput extends Component {
     };
   }
 
+  textLimitColoring = (key, maxLength, charLimitRemaining) => {
+    let className = "";
+
+    if (maxLength * (100 / 100) >= charLimitRemaining) {
+      className = "text-success";
+    }
+
+    if (maxLength * (50 / 100) >= charLimitRemaining) {
+      className = "text-warning";
+    }
+
+    if (maxLength * (25 / 100) >= charLimitRemaining) {
+      className = "text-danger";
+    }
+
+    return className;
+  };
+
+  textLimiter = (text, maxLength) => {
+    const textLimitRemaining = maxLength - text.length;
+
+    if (text.length > maxLength) {
+      text.splice(0, maxLength);
+    }
+
+    const className = this.textLimitColoring(
+      text,
+      maxLength,
+      textLimitRemaining
+    );
+
+    return {
+      text,
+      textLimitRemaining,
+      textClassName: className,
+    };
+  };
+
   onTitleChangeHandler = (event) => {
     const data = this.textLimiter(
       event.target.value,
@@ -40,44 +78,6 @@ class NotesInput extends Component {
       bodyCharLimitRemaining: data.textLimitRemaining,
       bodyClassName: data.textClassName,
     });
-  };
-
-  textLimiter = (text, maxLength) => {
-    const textLimitRemaining = maxLength - text.length;
-
-    if (text.length > maxLength) {
-      text.splice(0, maxLength);
-    }
-
-    const className = this.textLimitColoring(
-      text,
-      maxLength,
-      textLimitRemaining
-    );
-
-    return {
-      text,
-      textLimitRemaining,
-      textClassName: className,
-    };
-  };
-
-  textLimitColoring = (key, maxLength, charLimitRemaining) => {
-    let className = "";
-
-    if (maxLength * (100 / 100) >= charLimitRemaining) {
-      className = "text-success";
-    }
-
-    if (maxLength * (50 / 100) >= charLimitRemaining) {
-      className = "text-warning";
-    }
-
-    if (maxLength * (25 / 100) >= charLimitRemaining) {
-      className = "text-danger";
-    }
-
-    return className;
   };
 
   onSubmitHandler = (event) => {
