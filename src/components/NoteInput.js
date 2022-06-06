@@ -16,7 +16,7 @@ class NotesInput extends Component {
     };
   }
 
-  textLimitColoring = (key, maxLength, charLimitRemaining) => {
+  textLimitColoring = (maxLength, charLimitRemaining) => {
     let className = "";
 
     if (maxLength * (100 / 100) >= charLimitRemaining) {
@@ -44,7 +44,6 @@ class NotesInput extends Component {
     }
 
     const className = this.textLimitColoring(
-      text,
       maxLength,
       textLimitRemaining
     );
