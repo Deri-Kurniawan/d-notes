@@ -52,7 +52,7 @@ class NotesInput extends Component {
     return {
       text,
       textLimitRemaining,
-      textClassName: className,
+      className,
     };
   };
 
@@ -65,7 +65,7 @@ class NotesInput extends Component {
     this.setState({
       title: data.text,
       titleCharLimitRemaining: data.textLimitRemaining,
-      titleClassName: data.textClassName,
+      titleClassName: data.className,
     });
   };
 
@@ -78,7 +78,7 @@ class NotesInput extends Component {
     this.setState({
       body: data.text,
       bodyCharLimitRemaining: data.textLimitRemaining,
-      bodyClassName: data.textClassName,
+      bodyClassName: data.className,
     });
   };
 
