@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import { FormControl } from "react-bootstrap";
 
 class NoteSearch extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   onSearchChangeHandler = (event) => {
     this.props.onSearch(event.target.value);
   };
