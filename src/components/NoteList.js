@@ -16,15 +16,15 @@ const NotesList = ({ notes, onDelete, onArchive, onUnarchive, keyword }) => {
   }
 
   if(keyword.length > 0 && notes.length === 0) {
-    return <Alert variant='danger'>Notes by title <b>{keyword}</b> not found!</Alert>
+    return <Alert className='mt-3 mx-3' variant='danger'>Notes by title <b>{keyword}</b> not found!</Alert>
   }
 
   if(keyword.length === 0 && notes.length === 0) {
-    return <Alert variant='danger'>Notes is empty</Alert>
+    return <Alert className='mt-3 mx-3' variant='danger'>Notes is empty</Alert>
   }
 
   return (
-    <Row xs={1} md={1} lg={1} xl={2} xxl={2} className="g-4">
+    <Row xs={1} md={1} lg={1} xl={2} xxl={2} className="g-4 p-3">
       {
         notes.map((note) => (
           <Col key={note.id}>
