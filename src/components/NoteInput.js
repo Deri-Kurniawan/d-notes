@@ -52,9 +52,9 @@ class NotesInput extends Component {
     };
   };
 
-  onTitleChangeHandler = (event) => {
+  onTitleChangeHandler = ({ target }) => {
     const data = this.textLimiter(
-      event.target.value,
+      target.value,
       this.state.titleMaxLimit
     );
 
@@ -65,9 +65,9 @@ class NotesInput extends Component {
     });
   };
 
-  onBodyChangeHandler = (event) => {
+  onBodyChangeHandler = ({ target }) => {
     const data = this.textLimiter(
-      event.target.value,
+      target.value,
       this.state.bodyMaxLimit
     );
 

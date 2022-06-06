@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { FormControl } from "react-bootstrap";
 
 class NoteSearch extends Component {
-  onSearchChangeHandler = (event) => {
-    this.props.onSearch(event.target.value);
+  onSearchChangeHandler = ({ target }) => {
+    this.props.onSearch(target.value);
   };
 
   render() {
