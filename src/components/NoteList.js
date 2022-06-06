@@ -37,7 +37,7 @@ const NotesList = ({ notes, onDelete, onArchive, onUnarchive, keyword }) => {
 
   return (
     <Card className="shadow rounded">
-      <Row xs={1} md={1} lg={1} xl={2} xxl={2} className="g-4 p-3">
+      <Row xs={1} md={1} lg={1} xl={2} xxl={2} className="g-3 p-3">
         {notes.map((note) => (
           <Col key={note.id}>
             <NoteItem
