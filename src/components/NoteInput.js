@@ -107,7 +107,7 @@ class NotesInput extends Component {
               id="title"
               value={this.state.title}
               onChange={this.onTitleChangeHandler}
-              placeholder="Title"
+              placeholder="type something..."
             />
             <small>
               Remaining characters: &nbsp;
@@ -128,7 +128,7 @@ class NotesInput extends Component {
               id="body"
               value={this.state.body}
               onChange={this.onBodyChangeHandler}
-              placeholder="Body"
+              placeholder="type something..."
             ></Form.Control>
             <small>
               Remaining characters: &nbsp;
