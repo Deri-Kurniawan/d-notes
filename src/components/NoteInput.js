@@ -17,61 +17,61 @@ class NotesInput extends Component {
   }
 
   onTitleChangeHandler = (event) => {
-    const data = this.textLimiter(event.target.value, this.state.titleCharMaxLimit);
+    const data = this.textLimiter(event.target.value, this.state.titleCharMaxLimit)
 
     this.setState({
       title: data.text,
       titleCharLimitRemaining: data.textLimitRemaining,
       titleClassName: data.textClassName,
-    });
+    })
   }
 
   onBodyChangeHandler = (event) => { 
-    const data = this.textLimiter(event.target.value, this.state.bodyCharMaxLimit);
+    const data = this.textLimiter(event.target.value, this.state.bodyCharMaxLimit)
 
     this.setState({
       body: data.text,
       bodyCharLimitRemaining: data.textLimitRemaining,
       bodyClassName: data.textClassName,
-    });
+    })
   }
 
   textLimiter = (text, maxLength) => {
-    const textLimitRemaining = maxLength - text.length;
+    const textLimitRemaining = maxLength - text.length
 
     if(text.length > maxLength) {
-      text.splice(0, maxLength);
+      text.splice(0, maxLength)
     }
 
-    const className = this.textLimitColoring(text, maxLength, textLimitRemaining);
+    const className = this.textLimitColoring(text, maxLength, textLimitRemaining)
 
     return {
       text,
       textLimitRemaining,
       textClassName: className,
-    };
+    }
   }
 
   textLimitColoring = (key, maxLength, charLimitRemaining) => {
-    let className = '';
+    let className = ''
 
     if(key.length > maxLength) {
-      key.splice(0, maxLength);
+      key.splice(0, maxLength)
     }
 
     if((maxLength * (100/100)) >= charLimitRemaining) {
-      className = 'text-success';
+      className = 'text-success'
     }
 
     if((maxLength * (50/100)) >= charLimitRemaining) {
-      className = 'text-warning';
+      className = 'text-warning'
     }
 
     if((maxLength * (25/100)) >= charLimitRemaining) {
-      className = 'text-danger';
+      className = 'text-danger'
     }
 
-    return className;
+    return className
   }
   
   onSubmitHandler = (event) => {

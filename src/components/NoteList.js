@@ -11,8 +11,8 @@ const NotesList = ({ notes, onDelete, onArchive, onUnarchive, keyword }) => {
       if(note.title.toLowerCase().includes(keyword.toLowerCase())) {
         return note
       }
-      return false;
-    });
+      return false
+    })
   }
 
   if(keyword.length > 0 && notes.length === 0) {
@@ -24,7 +24,7 @@ const NotesList = ({ notes, onDelete, onArchive, onUnarchive, keyword }) => {
   }
 
   return (
-    <Row xs={1} md={1} lg={1} xl={2} xxl={2} className="g-4 p-3">
+    <Row xs={1} md={1} lg={1} xl={2} xxl={2} className='g-4 p-3'>
       {
         notes.map((note) => (
           <Col key={note.id}>

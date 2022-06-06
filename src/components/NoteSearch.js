@@ -15,10 +15,10 @@ class NoteSearch extends Component {
     return (
       <>
         <FormControl
-          type="search"
-          className="me-2"
-          placeholder="Search notes by title"
-          aria-label="Search notes by title"
+          type='search'
+          className='me-2'
+          placeholder='Search notes by title'
+          aria-label='Search notes by title'
           onChange={this.onSearchChangeHandler}
         />
       </>
