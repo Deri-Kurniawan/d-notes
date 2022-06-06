@@ -7,27 +7,27 @@ class NotesInput extends Component {
     this.state = {
       title: "",
       body: "",
-      titleCharMaxLimit: 50,
-      titleCharLimitRemaining: 50,
+      titleMaxLimit: 50,
+      titleLimitRemaining: 50,
       titleClassName: "text-success",
-      bodyCharMaxLimit: 250,
-      bodyCharLimitRemaining: 250,
+      bodyMaxLimit: 250,
+      bodyLimitRemaining: 250,
       bodyClassName: "text-success",
     };
   }
 
-  textLimitColoring = (maxLength, charLimitRemaining) => {
+  textLimitColoring = (maxLength, textLimitRemaining) => {
     let className = "";
 
-    if (maxLength * (100 / 100) >= charLimitRemaining) {
+    if (maxLength * (100 / 100) >= textLimitRemaining) {
       className = "text-success";
     }
 
-    if (maxLength * (50 / 100) >= charLimitRemaining) {
+    if (maxLength * (50 / 100) >= textLimitRemaining) {
       className = "text-warning";
     }
 
-    if (maxLength * (25 / 100) >= charLimitRemaining) {
+    if (maxLength * (25 / 100) >= textLimitRemaining) {
       className = "text-danger";
     }
 
@@ -55,12 +55,12 @@ class NotesInput extends Component {
   onTitleChangeHandler = (event) => {
     const data = this.textLimiter(
       event.target.value,
-      this.state.titleCharMaxLimit
+      this.state.titleMaxLimit
     );
 
     this.setState({
       title: data.text,
-      titleCharLimitRemaining: data.textLimitRemaining,
+      titleLimitRemaining: data.textLimitRemaining,
       titleClassName: data.className,
     });
   };
@@ -68,12 +68,12 @@ class NotesInput extends Component {
   onBodyChangeHandler = (event) => {
     const data = this.textLimiter(
       event.target.value,
-      this.state.bodyCharMaxLimit
+      this.state.bodyMaxLimit
     );
 
     this.setState({
       body: data.text,
-      bodyCharLimitRemaining: data.textLimitRemaining,
+      bodyLimitRemaining: data.textLimitRemaining,
       bodyClassName: data.className,
     });
   };
@@ -88,8 +88,8 @@ class NotesInput extends Component {
     this.setState({
       title: "",
       body: "",
-      titleCharLimitRemaining: this.state.titleCharMaxLimit,
-      bodyCharLimitRemaining: this.state.bodyCharMaxLimit,
+      titleLimitRemaining: this.state.titleMaxLimit,
+      bodyLimitRemaining: this.state.bodyMaxLimit,
       titleClassName: "text-success",
       bodyClassName: "text-success",
     });
@@ -112,8 +112,8 @@ class NotesInput extends Component {
             <small>
               Remaining characters: &nbsp;
               <span className={this.state.titleClassName}>
-                {this.state.titleCharLimitRemaining !== 0
-                  ? this.state.titleCharLimitRemaining
+                {this.state.titleLimitRemaining !== 0
+                  ? this.state.titleLimitRemaining
                   : "Max limit reached!"}
               </span>
             </small>
@@ -133,8 +133,8 @@ class NotesInput extends Component {
             <small>
               Remaining characters: &nbsp;
               <span className={this.state.bodyClassName}>
-                {this.state.bodyCharLimitRemaining !== 0
-                  ? this.state.bodyCharLimitRemaining
+                {this.state.bodyLimitRemaining !== 0
+                  ? this.state.bodyLimitRemaining
                   : "Max limit reached!"}
               </span>
             </small>
