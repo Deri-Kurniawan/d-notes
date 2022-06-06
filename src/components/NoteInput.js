@@ -36,17 +36,14 @@ class NotesInput extends Component {
 
   textLimiter = (text, maxLength) => {
     let textLimitRemaining = 0;
-    
+
     if (text.length > maxLength) {
       text = text.substr(0, maxLength);
     } else {
       textLimitRemaining = maxLength - text.length;
     }
 
-    const className = this.textLimitColoring(
-      maxLength,
-      textLimitRemaining
-    );
+    const className = this.textLimitColoring(maxLength, textLimitRemaining);
 
     return {
       text,
@@ -117,7 +114,7 @@ class NotesInput extends Component {
               <span className={this.state.titleClassName}>
                 {this.state.titleCharLimitRemaining !== 0
                   ? this.state.titleCharLimitRemaining
-                  : "Max limit reached"}
+                  : "Max limit reached!"}
               </span>
             </small>
           </Form.Group>
