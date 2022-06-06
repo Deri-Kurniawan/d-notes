@@ -37,7 +37,7 @@ class NotesInput extends Component {
   textLimiter = (text, maxLength) => {
     let textLimitRemaining = 0;
     
-    if ((text.length + 1) > maxLength) {
+    if (text.length > maxLength) {
       text = text.substr(0, maxLength);
     } else {
       textLimitRemaining = maxLength - text.length;
