@@ -35,10 +35,12 @@ class NotesInput extends Component {
   };
 
   textLimiter = (text, maxLength) => {
-    const textLimitRemaining = maxLength - text.length;
-
-    if (text.length > maxLength) {
-      text.splice(0, maxLength);
+    let textLimitRemaining = 0;
+    
+    if ((text.length + 1) > maxLength) {
+      text = text.substr(0, maxLength);
+    } else {
+      textLimitRemaining = maxLength - text.length;
     }
 
     const className = this.textLimitColoring(
