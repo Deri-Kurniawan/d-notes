@@ -9,71 +9,69 @@ class NotesInput extends Component {
       body: '',
       titleCharMaxLimit: 50,
       titleCharLimitRemaining: 50,
-      bodyCharMaxLimit: 200,
-      bodyCharLimitRemaining: 200,
-      titleClass: 'text-success',
-      bodyClass: 'text-success',
+      titleClassName: 'text-success',
+      bodyCharMaxLimit: 250,
+      bodyCharLimitRemaining: 250,
+      bodyClassName: 'text-success',
     }
   }
 
   onTitleChangeHandler = (event) => {
-    const maxLength = this.state.titleCharMaxLimit;
-    const title = event.target.value;
-    const titleLength = title.length;
-    const titleCharLimitRemaining = maxLength - titleLength;
-    let titleClass = '';
-
-    if(title.length > maxLength) {
-      title.splice(0, maxLength);
-    }
-
-    if((maxLength * (100/100)) >= titleCharLimitRemaining) {
-      titleClass = 'text-success';
-    }
-    
-    if((maxLength * (50/100)) >= titleCharLimitRemaining) {
-      titleClass = 'text-warning';
-    }
-
-    if((maxLength * (25/100)) >= titleCharLimitRemaining) {
-      titleClass = 'text-danger';
-    }
+    const data = this.textLimiter(event.target.value, this.state.titleCharMaxLimit);
 
     this.setState({
-      title,
-      titleCharLimitRemaining,
-      titleClass,
+      title: data.text,
+      titleCharLimitRemaining: data.textLimitRemaining,
+      titleClassName: data.textClassName,
     });
   }
 
-  onBodyChangeHandler = (event) => {
-    const maxLength = this.state.bodyCharMaxLimit;
-    const body = event.target.value;
-    const bodyLength = body.length;
-    const bodyCharLimitRemaining = maxLength - bodyLength;
-    let bodyClass = '';
-
-    if(body.length > maxLength) {
-      body.splice(0, maxLength);
-    }
-
-    if((maxLength * (100/100)) >= bodyCharLimitRemaining) {
-      bodyClass = 'text-success';
-    }
-
-    if((maxLength * (50/100)) >= bodyCharLimitRemaining) {
-      bodyClass = 'text-warning';
-    }
-
-    if((maxLength * (25/100)) >= bodyCharLimitRemaining) {
-      bodyClass = 'text-danger';
-    }
+  onBodyChangeHandler = (event) => { 
+    const data = this.textLimiter(event.target.value, this.state.bodyCharMaxLimit);
 
     this.setState({
-      body,
-      bodyCharLimitRemaining,
-      bodyClass,
+      body: data.text,
+      bodyCharLimitRemaining: data.textLimitRemaining,
+      bodyClassName: data.textClassName,
     });
+  }
+
+  textLimiter = (text, maxLength) => {
+    const textLimitRemaining = maxLength - text.length;
+
+    if(text.length > maxLength) {
+      text.splice(0, maxLength);
+    }
+
+    const className = this.textLimitColoring(text, maxLength, textLimitRemaining);
+
+    return {
+      text,
+      textLimitRemaining,
+      textClassName: className,
+    };
+  }
+
+  textLimitColoring = (key, maxLength, charLimitRemaining) => {
+    let className = '';
+
+    if(key.length > maxLength) {
+      key.splice(0, maxLength);
+    }
+
+    if((maxLength * (100/100)) >= charLimitRemaining) {
+      className = 'text-success';
+    }
+
+    if((maxLength * (50/100)) >= charLimitRemaining) {
+      className = 'text-warning';
+    }
+
+    if((maxLength * (25/100)) >= charLimitRemaining) {
+      className = 'text-danger';
+    }
+
+    return className;
   }
   
   onSubmitHandler = (event) => {
@@ -88,8 +86,8 @@ class NotesInput extends Component {
       body: '',
       titleCharLimitRemaining: this.state.titleCharMaxLimit,
       bodyCharLimitRemaining: this.state.bodyCharMaxLimit,
-      titleClass: 'text-success',
-      bodyClass: 'text-success',
+      titleClassName: 'text-success',
+      bodyClassName: 'text-success',
     })
   }
 
@@ -100,8 +98,8 @@ class NotesInput extends Component {
             <Form.Group className='mb-3'>
               <Form.Label htmlFor='title'>Title</Form.Label>
               <Form.Control type='text' name='title' id='title' value={this.state.title} onChange={this.onTitleChangeHandler} placeholder='Title' />
-              <small>Limit:&nbsp;
-                <span className={this.state.titleClass}>
+              <small>Remaining characters: &nbsp;
+                <span className={this.state.titleClassName}>
                  {(this.state.titleCharLimitRemaining !== 0) ? this.state.titleCharLimitRemaining : 'Max limit reached'}
                 </span>
               </small>
@@ -109,9 +107,9 @@ class NotesInput extends Component {
             <Form.Group className='mb-3'>
               <Form.Label htmlFor='body'>Body</Form.Label>
               <Form.Control as='textarea' cols='30' rows='10' name='body' id='body' value={this.state.body} onChange={this.onBodyChangeHandler} placeholder='Body'></Form.Control>
-              <small>Limit:&nbsp;
-                <span className={this.state.bodyClass}>
-                  {(this.state.bodyCharLimitRemaining !== 0) ? this.state.bodyCharLimitRemaining : 'Max limit reached'}
+              <small>Remaining characters: &nbsp;
+                <span className={this.state.bodyClassName}>
+                  {(this.state.bodyCharLimitRemaining !== 0) ? this.state.bodyCharLimitRemaining : 'Max limit reached!'}
                 </span>
               </small>
             </Form.Group>
