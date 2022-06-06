@@ -65,10 +65,6 @@ class NotesInput extends Component {
   textLimitColoring = (key, maxLength, charLimitRemaining) => {
     let className = "";
 
-    if (key.length > maxLength) {
-      key.splice(0, maxLength);
-    }
-
     if (maxLength * (100 / 100) >= charLimitRemaining) {
       className = "text-success";
     }
