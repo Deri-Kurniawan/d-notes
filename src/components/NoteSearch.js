@@ -1,24 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import { FormControl } from "react-bootstrap";
 
-class NoteSearch extends Component {
-  onSearchChangeHandler = ({ target }) => {
-    this.props.onSearch(target.value);
+const NoteSearch = ({ onSearch }) => {
+  const onSearchChangeHandler = ({ target }) => {
+    onSearch(target.value);
   };
 
-  render() {
-    return (
-      <>
-        <FormControl
-          type="search"
-          className="me-2"
-          placeholder="Search notes by title"
-          aria-label="Search notes by title"
-          onChange={this.onSearchChangeHandler}
-        />
-      </>
-    );
-  }
+  return (
+    <>
+      <FormControl
+        type="search"
+        className="me-2"
+        placeholder="Search notes by title"
+        aria-label="Search notes by title"
+        onChange={onSearchChangeHandler}
+      />
+    </>
+  );
 }
 
 export default NoteSearch;
